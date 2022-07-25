@@ -57,8 +57,8 @@ public class Main2 {
 		Menu menu = new Menu();
 
 		menu.aggiungiMenu(carbonara);
-		menu.aggiungiMenu(coca);
 		menu.aggiungiMenu(caprese);
+		menu.aggiungiMenu(coca);
 		menu.aggiungiMenu(fanta);
 
 		List<Tavolo> listaTavoli = new ArrayList<>();
@@ -78,7 +78,7 @@ public class Main2 {
 				System.out.println("Il mio menu è : ");
 				int i = 0;
 				for(Prodotto prodotto : menu.getMenu()) {
-					System.out.println(i + "\t" + prodotto.getNome() + "\t" + prodotto.getPrezzo());
+					System.out.println(i + "\t" + prodotto.getNome() + "\t" + "\t" + prodotto.getPrezzo());
 					i++;
 				}
 				scegliere.nextLine();
@@ -106,6 +106,7 @@ public class Main2 {
 				System.out.println("Scegli tavolo : ");
 				numeroTavolo = scegliere.nextInt();
 				tavolo=listaTavoli.get(numeroTavolo);
+				scegliere.nextLine();
 
 				while(!"0".equals(scelta)) {
 
@@ -113,25 +114,42 @@ public class Main2 {
 					System.out.println("Inserisci un prodotto: ");
 					scelta = scegliere.nextLine();
 
-					switch(scelta) {
-
-					case "carbonara":
-						tavolo.aggiungiAOrdine(carbonara);
-						break;
-
-					case "caprese":
-						tavolo.aggiungiAOrdine(caprese);
-						break;
-
-					case "coca":
-						tavolo.aggiungiAOrdine(coca);
-						break;
-
-					case "fanta":
-						tavolo.aggiungiAOrdine(fanta);
-						break;
-						
+/*
+ * Metodo più generico
+ */
+					
+					for(Prodotto prod : menu.getMenu()) {
+						if(scelta.equals(prod.getNome())) {
+							tavolo.aggiungiAOrdine(prod);
+						} 
 					}
+					
+					
+					
+
+/*
+ * Metodo con switch-case
+ */
+
+//					switch(scelta) {
+//
+//					case "carbonara":
+//						tavolo.aggiungiAOrdine(carbonara);
+//						break;
+//
+//					case "caprese":
+//						tavolo.aggiungiAOrdine(caprese);
+//						break;
+//
+//					case "coca":
+//						tavolo.aggiungiAOrdine(coca);
+//						break;
+//
+//					case "fanta":
+//						tavolo.aggiungiAOrdine(fanta);
+//						break;
+//						
+//					}
 
 				}
 				

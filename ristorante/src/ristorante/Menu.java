@@ -19,6 +19,18 @@ public class Menu {
 		menu.add(prodotto);
 	}
 	
+//	public boolean contiene(String string) {
+//		return menu.contains(string);
+//	}
+	
+//	public boolean contiene(Prodotto prod) {
+//		return menu.contains(prod);
+//	}
+//	
+//	public Prodotto cercaProdotto(String scelta) {
+//		if(scelta == prod.getNome())
+//	}
+	
 	@Override
 	public String toString() {
 		return menu + "menu";

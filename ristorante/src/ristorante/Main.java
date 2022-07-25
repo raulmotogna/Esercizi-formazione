@@ -40,6 +40,7 @@ public class Main {
 					System.out.println(i + "\t" + prodotto.getNome() + "\t" + prodotto.getPrezzo());
 					i++;
 				}
+				scegliere.nextLine();
 				break;
 			
 			case "1":
@@ -54,7 +55,8 @@ public class Main {
 				mappaTavoli.put(numeroTavolo, tavolo);
 				
 				System.out.println("Tavolo: " + "Tavolo numero : " + tavolo.getNumeroTavolo() + " " + "Numero coperti : " + tavolo.getNumeroCoperti());
-			break;
+				scegliere.nextLine();
+			    break;
 			
 			case "2":
 				
@@ -62,6 +64,7 @@ public class Main {
 				System.out.println("Scegli tavolo : ");
 				numeroTavolo = scegliere.nextInt();
 				tavolo=mappaTavoli.get(numeroTavolo);
+				scegliere.nextLine();
 				
 				while(!"0".equals(scelta)) {
 
@@ -69,24 +72,42 @@ public class Main {
 					System.out.println("Inserisci un prodotto: ");
 					scelta = scegliere.nextLine();
 					
-					switch(scelta) {
-
-					case "carbonara":
-						tavolo.aggiungiAOrdine(carbonara);
-						break;
-
-					case "caprese":
-						tavolo.aggiungiAOrdine(caprese);
-						break;
-
-					case "coca":
-						tavolo.aggiungiAOrdine(coca);
-						break;
-
-					case "fanta":
-						tavolo.aggiungiAOrdine(fanta);
-						break;
+/*
+ * Metodo più generico
+ */
+										
+					for(Prodotto prod : menu.getMenu()) {
+						if(scelta.equals(prod.getNome())) {
+							tavolo.aggiungiAOrdine(prod);
+						} else {
+							System.out.println("Prodotto non presente sul menu");
+						} 
 					}
+					
+					
+/*
+ * Metodo con switch-case
+ */
+					
+					
+//					switch(scelta) {
+//
+//					case "carbonara":
+//						tavolo.aggiungiAOrdine(carbonara);
+//						break;
+//
+//					case "caprese":
+//						tavolo.aggiungiAOrdine(caprese);
+//						break;
+//
+//					case "coca":
+//						tavolo.aggiungiAOrdine(coca);
+//						break;
+//
+//					case "fanta":
+//						tavolo.aggiungiAOrdine(fanta);
+//						break;
+//					}
 				}
 				System.out.println("il tuo ordine è : " + tavolo.getOrdine());
 				break;
@@ -99,6 +120,7 @@ public class Main {
 
 				System.out.println("Il tuo conto è : ");
 				System.out.println(tavolo.calcolaconto());
+				scegliere.nextLine();
 				break;
 			}
 		}
